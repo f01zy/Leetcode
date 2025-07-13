@@ -1,7 +1,5 @@
 #include <vector>
-#include <iostream>
 #include <string>
-#include <format>
 
 void writeRange(int start, int end, std::vector<int> &nums, std::vector<std::string> &ranges)
 {
@@ -61,15 +59,4 @@ std::vector<std::string> summaryRanges(std::vector<int> &nums)
   }
 
   return ranges;
-}
-
-int main()
-{
-  std::vector<int> nums = {};
-  std::vector<std::string> ranges = summaryRanges(nums);
-
-  for (std::string range : ranges)
-  {
-    std::cout << range << std::endl;
-  }
 }

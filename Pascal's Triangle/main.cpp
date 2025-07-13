@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 
 std::vector<std::vector<int>> generate(int numRows)
 {

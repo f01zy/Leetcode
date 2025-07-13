@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 #include <unordered_map>
 
 int singleNumber(std::vector<int> &nums)
@@ -25,12 +24,4 @@ int singleNumber(std::vector<int> &nums)
   }
 
   return -1;
-}
-
-int main()
-{
-  std::vector<int> nums = {4, 1, 2, 1, 2};
-  int num = singleNumber(nums);
-
-  std::cout << num << std::endl;
 }

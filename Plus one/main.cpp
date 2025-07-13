@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 
 std::vector<int> plusOne(std::vector<int> &digits)
 {
@@ -29,16 +28,4 @@ std::vector<int> plusOne(std::vector<int> &digits)
   }
 
   return digits;
-}
-
-int main()
-{
-  std::vector<int> digits = {9, 9, 9};
-  digits = plusOne(digits);
-
-  for (int i : digits)
-  {
-    std::cout << i;
-  }
-  std::cout << std::endl;
 }

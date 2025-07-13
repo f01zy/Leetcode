@@ -1,5 +1,4 @@
 #include <cmath>
-#include <iostream>
 
 int hammingWeight(int n)
 {
@@ -22,9 +21,4 @@ int hammingWeight(int n)
   }
 
   return res;
-}
-
-int main()
-{
-  std::cout << hammingWeight(11) << std::endl;
 }

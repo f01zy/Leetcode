@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 #include <algorithm>
 #include <string>
 
@@ -41,15 +40,4 @@ std::vector<std::string> findRelativeRanks(std::vector<int> &score)
   }
 
   return result;
-}
-
-int main()
-{
-  std::vector<int> score = {10, 3, 8, 9, 4};
-  std::vector<std::string> ranks = findRelativeRanks(score);
-
-  for (std::string &rank : ranks)
-  {
-    std::cout << rank << std::endl;
-  }
 }

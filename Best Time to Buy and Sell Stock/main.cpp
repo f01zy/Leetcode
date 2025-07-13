@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 
 int getLarger(std::vector<int> &prices, int start, int end)
 {
@@ -34,11 +33,4 @@ int maxProfit(std::vector<int> &prices)
   }
 
   return res;
-}
-
-int main()
-{
-  std::vector<int> prices = {7, 1, 5, 3, 6, 4};
-
-  maxProfit(prices);
 }

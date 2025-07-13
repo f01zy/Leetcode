@@ -1,6 +1,4 @@
 #include <vector>
-#include <iostream>
-#include <algorithm>
 
 int missingNumber(std::vector<int> &nums)
 {
@@ -18,12 +16,4 @@ int missingNumber(std::vector<int> &nums)
   }
 
   return a - b;
-}
-
-int main()
-{
-  std::vector<int> nums{0, 1};
-  int num = missingNumber(nums);
-
-  std::cout << num << std::endl;
 }

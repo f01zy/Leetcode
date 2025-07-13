@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 #include <unordered_map>
 
 int removeDuplicates(std::vector<int> &nums)
@@ -42,18 +41,4 @@ int removeDuplicates(std::vector<int> &nums)
   }
 
   return nums.size() - moves;
-}
-
-int main()
-{
-  std::vector<int> nums = {0, 0, 1, 1, 1, 1, 2, 3, 3};
-
-  int elements = removeDuplicates(nums);
-  std::cout << elements << std::endl;
-
-  for (int i : nums)
-  {
-    std::cout << i << " ";
-  }
-  std::cout << std::endl;
 }

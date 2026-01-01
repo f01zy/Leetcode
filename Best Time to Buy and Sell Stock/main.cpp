@@ -1,13 +1,10 @@
 #include <vector>
 
-int getLarger(std::vector<int> &prices, int start, int end)
-{
+int getLarger(std::vector<int> &prices, int start, int end) {
   int larger = prices[start];
 
-  for (int i = start; i <= end; i++)
-  {
-    if (prices[i] > larger)
-    {
+  for (int i = start; i <= end; i++) {
+    if (prices[i] > larger) {
       larger = prices[i];
     }
   }
@@ -15,19 +12,16 @@ int getLarger(std::vector<int> &prices, int start, int end)
   return larger;
 }
 
-int maxProfit(std::vector<int> &prices)
-{
+int maxProfit(std::vector<int> &prices) {
   int size = prices.size();
   int res = 0;
 
-  for (int i = 0; i < size - 1; i++)
-  {
+  for (int i = 0; i < size - 1; i++) {
     int buy = prices[i];
     int sell = getLarger(prices, i + 1, prices.size() - 1);
     int profit = sell - buy;
 
-    if (profit > res)
-    {
+    if (profit > res) {
       res = profit;
     }
   }

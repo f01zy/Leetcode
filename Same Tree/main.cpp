@@ -1,7 +1,6 @@
 #include <vector>
 
-struct TreeNode
-{
+struct TreeNode {
   int val;
   TreeNode *left;
   TreeNode *right;
@@ -10,49 +9,39 @@ struct TreeNode
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-void traverse(TreeNode *node, std::vector<int> &arr)
-{
+void traverse(TreeNode *node, std::vector<int> &arr) {
   arr.push_back(node->val);
 
-  if (node->left)
-  {
+  if (node->left) {
     traverse(node->left, arr);
   }
 
-  else if (!node->left && node->right)
-  {
+  else if (!node->left && node->right) {
     arr.push_back(0);
   }
 
-  if (node->right)
-  {
+  if (node->right) {
     traverse(node->right, arr);
   }
 }
 
-bool isSameTree(TreeNode *p, TreeNode *q)
-{
+bool isSameTree(TreeNode *p, TreeNode *q) {
   std::vector<int> a;
-  if (p)
-  {
+  if (p) {
     traverse(p, a);
   }
 
   std::vector<int> b;
-  if (q)
-  {
+  if (q) {
     traverse(q, b);
   }
 
-  if (a.size() != b.size())
-  {
+  if (a.size() != b.size()) {
     return false;
   }
 
-  for (int i = 0; i < a.size(); i++)
-  {
-    if (a[i] != b[i])
-    {
+  for (int i = 0; i < a.size(); i++) {
+    if (a[i] != b[i]) {
       return false;
     }
   }

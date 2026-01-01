@@ -14,8 +14,7 @@ int maxFreqSum(std::string s) {
   }
 
   for (const auto &pair : letters) {
-    if (pair.first == 'a' || pair.first == 'e' || pair.first == 'o' ||
-        pair.first == 'i' || pair.first == 'u') {
+    if (pair.first == 'a' || pair.first == 'e' || pair.first == 'o' || pair.first == 'i' || pair.first == 'u') {
       if (pair.second > vowel) {
         vowel = pair.second;
       }

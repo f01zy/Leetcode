@@ -1,5 +1,4 @@
-struct TreeNode
-{
+struct TreeNode {
   int val;
   TreeNode *left;
   TreeNode *right;
@@ -8,32 +7,25 @@ struct TreeNode
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-bool hasPathSum(TreeNode *node, int targetSum)
-{
-  if (!node)
-  {
+bool hasPathSum(TreeNode *node, int targetSum) {
+  if (!node) {
     return false;
   }
   int currentSum = targetSum - node->val;
-  if (currentSum == 0 && !node->left && !node->right)
-  {
+  if (currentSum == 0 && !node->left && !node->right) {
     return true;
   }
-  if (node->left)
-  {
+  if (node->left) {
     bool left = hasPathSum(node->left, currentSum);
 
-    if (left)
-    {
+    if (left) {
       return true;
     }
   }
-  if (node->right)
-  {
+  if (node->right) {
     bool right = hasPathSum(node->right, currentSum);
 
-    if (right)
-    {
+    if (right) {
       return true;
     }
   }

@@ -1,5 +1,4 @@
-struct ListNode
-{
+struct ListNode {
   int val;
   ListNode *next;
   ListNode() : val(0), next(nullptr) {}
@@ -7,32 +6,25 @@ struct ListNode
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-ListNode *deleteDuplicates(ListNode *head)
-{
-  if (!head || !head->next)
-  {
+ListNode *deleteDuplicates(ListNode *head) {
+  if (!head || !head->next) {
     return head;
   }
 
   ListNode *node = head;
-  while (node && node->next)
-  {
-    if (node->val == node->next->val)
-    {
-      if (node->next->next)
-      {
+  while (node && node->next) {
+    if (node->val == node->next->val) {
+      if (node->next->next) {
         node->next = node->next->next;
       }
 
-      else
-      {
+      else {
         node->next = nullptr;
         break;
       }
     }
 
-    else
-    {
+    else {
       node = node->next;
     }
   }

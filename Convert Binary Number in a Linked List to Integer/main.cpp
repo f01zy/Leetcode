@@ -1,8 +1,7 @@
-#include <vector>
 #include <cmath>
+#include <vector>
 
-struct ListNode
-{
+struct ListNode {
   int val;
   ListNode *next;
   ListNode() : val(0), next(nullptr) {}
@@ -10,20 +9,17 @@ struct ListNode
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-int getDecimalValue(ListNode *head)
-{
+int getDecimalValue(ListNode *head) {
   std::vector<int> nums;
   int result = 0;
 
   ListNode *node = head;
-  while (node)
-  {
+  while (node) {
     nums.push_back(node->val);
     node = node->next;
   }
 
-  for (int i = 0; i < nums.size(); i++)
-  {
+  for (int i = 0; i < nums.size(); i++) {
     result += nums[i] * static_cast<int>(std::pow(2, nums.size() - i - 1));
   }
 

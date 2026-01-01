@@ -1,9 +1,7 @@
 #include <string>
 
-bool isValid(std::string word)
-{
-  if (word.size() < 3)
-  {
+bool isValid(std::string word) {
+  if (word.size() < 3) {
     return false;
   }
 
@@ -13,20 +11,16 @@ bool isValid(std::string word)
   bool isVowel = false;
   bool isConsonant = false;
 
-  for (char symbol : word)
-  {
-    if (symbols.find(symbol) != std::string::npos)
-    {
+  for (char symbol : word) {
+    if (symbols.find(symbol) != std::string::npos) {
       return false;
     }
 
-    else if (vowels.find(symbol) != std::string::npos)
-    {
+    else if (vowels.find(symbol) != std::string::npos) {
       isVowel = true;
     }
 
-    else if (nums.find(symbol) == std::string::npos)
-    {
+    else if (nums.find(symbol) == std::string::npos) {
       isConsonant = true;
     }
   }

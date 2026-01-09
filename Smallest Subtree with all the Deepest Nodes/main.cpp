@@ -1,4 +1,3 @@
-#include <climits>
 #include <iostream>
 
 struct TreeNode {
@@ -12,8 +11,6 @@ struct TreeNode {
 
 TreeNode *result;
 int maxDeep = 0;
-int maxRelativeDeep = 0;
-int minRootDeep = INT_MAX;
 
 int findSubtreeWithAllDeepest(TreeNode *node, int deep) {
   if (!node) {
@@ -21,13 +18,13 @@ int findSubtreeWithAllDeepest(TreeNode *node, int deep) {
   }
   int leftDeep = findSubtreeWithAllDeepest(node->left, deep + 1);
   int rightDeep = findSubtreeWithAllDeepest(node->right, deep + 1);
-  int currentNodeDeep = std::max(leftDeep, rightDeep) + 1;
-  if (leftDeep == rightDeep && deep < minRootDeep && currentNodeDeep > maxRelativeDeep) {
+  int currentDeep = std::max(leftDeep, rightDeep);
+  int absoluteDeep = deep + currentDeep;
+  if (leftDeep == rightDeep && absoluteDeep >= maxDeep) {
     result = node;
-    minRootDeep = deep;
-    maxRelativeDeep = currentNodeDeep;
+    maxDeep = absoluteDeep;
   }
-  return currentNodeDeep;
+  return currentDeep + 1;
 }
 
 TreeNode *subtreeWithAllDeepest(TreeNode *root) {

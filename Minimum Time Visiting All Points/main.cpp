@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <iostream>
 #include <vector>
 
 int minTimeToVisitAllPoints(std::vector<std::vector<int>> &points) {
@@ -15,9 +14,4 @@ int minTimeToVisitAllPoints(std::vector<std::vector<int>> &points) {
     positionY = pointY;
   }
   return time;
-}
-
-int main() {
-  std::vector<std::vector<int>> points{{1, 1}, {3, 4}, {-1, 0}};
-  std::cout << minTimeToVisitAllPoints(points) << std::endl;
 }

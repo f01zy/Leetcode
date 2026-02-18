@@ -1,27 +1,21 @@
-#include <unordered_map>
 #include <vector>
 
+int charToNumber(char ch) { return ch - '0'; }
+
 bool isValidSudoku(std::vector<std::vector<char>> &board) {
-  // 1-9 rows
-  // 9-18 cols
-  // 18-27 blocks
-  std::vector<std::unordered_map<char, int>> cache(27);
+  int rows[9][10]{0};
+  int cols[9][10]{0};
+  int boxes[9][10]{0};
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
       char ch = board[i][j];
       if (ch == '.') {
         continue;
       }
+      int num = charToNumber(ch);
       int x = j / 3;
       int y = i / 3;
-      cache[i][ch]++;
-      cache[9 + j][ch]++;
-      cache[18 + (x + y * 3)][ch]++;
-    }
-  }
-  for (std::unordered_map<char, int> i : cache) {
-    for (auto it = i.begin(); it != i.end(); it++) {
-      if (it->second > 1) {
+      if (rows[i][num]++ == 1 || cols[j][num]++ == 1 || boxes[x + y * 3][num]++ == 1) {
         return false;
       }
     }

@@ -1,65 +1,35 @@
-// Решение - говно
-
+#include <stack>
 #include <string>
 using namespace std;
 
-long long stringToNumber(string &s) {
-  long long result = 0;
-  for (char c : s) {
-    result = result * 10 + (c - '0');
-  }
-  return result;
-}
-
-long long getFullNumber(string &s, int &last, int i) {
-  string num;
-  for (int j = i; j < s.size(); j++) {
-    if (s[j] == '+' || s[j] == '-' || s[j] == ' ') {
-      break;
-    }
-    last = j;
-    num.push_back(s[j]);
-  }
-  return stringToNumber(num);
-}
-
 int calculate(string s) {
-  int j = 0;
-  while (1) {
-    bool isFinished = true;
-    for (int i = 0; i < s.size(); i++) {
-      if (s[i] == ')') {
-        isFinished = false;
-        s.replace(j, i - j + 1,
-                  to_string(calculate(s.substr(j + 1, i - j - 1))));
-        break;
-      } else if (s[i] == '(') {
-        j = i;
-      }
+  stack<int> signs;
+  long long num = 0, result = 0;
+  int sign = 1, externalSign = 1;
+  for (int i = 0; i < s.size(); i++) {
+    char ch = s[i];
+    if (isdigit(ch)) {
+      num = num * 10 + ch - '0';
+    } else {
+      result += num * externalSign * sign;
+      num = 0;
     }
-    if (isFinished) {
-      break;
+    if (ch == '+') {
+      sign = 1;
+    } else if (ch == '-') {
+      sign = -1;
+    } else if (ch == '(') {
+      signs.push(externalSign);
+      externalSign *= sign;
+      sign = 1;
+    } else if (ch == ')') {
+      externalSign = signs.top();
+      signs.pop();
+      sign = 1;
     }
   }
-  long long result = 0;
-  int sign = 1;
-  for (int i = 0; i < s.size(); i++) {
-    if (s[i] == ' ') {
-      continue;
-    } else if (s[i] == '+') {
-      sign = 1;
-    } else if (s[i] == '-') {
-      if (sign == -1) {
-        sign = 1;
-      } else {
-        sign = -1;
-      }
-    } else {
-      int last = i;
-      result += getFullNumber(s, last, i) * sign;
-      i = last;
-      sign = 1;
-    }
+  if (num) {
+    result += num * sign;
   }
   return result;
 }
